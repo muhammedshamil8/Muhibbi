@@ -25,3 +25,4 @@ This repository contains the code for the Madrassa Arts website, built using Rea
 - **Team Score**: Real-time team scores are updated and displayed.
 
 # Muhibbi
+# Muhibbi
