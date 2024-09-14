@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    img {
+        display: initial;
+    }
+}
+
+
+.footer {
+    background-color: #0284c7;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
