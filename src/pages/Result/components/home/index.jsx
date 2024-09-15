@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { fetchRecords } from "@/utils/airtableService";
 import { motion, AnimatePresence } from "framer-motion";
 import Poster from "@/components/common/Poster";
-import { ChevronLeft } from "lucide-react"
+import { ChevronLeft, Loader } from "lucide-react"
 import html2canvas from 'html2canvas';
 
 function Results() {
@@ -12,6 +12,7 @@ function Results() {
     const [result, setResult] = useState([]);
     const [showResultCard, setShowResultList] = useState(true);
     const [showCard, setShowCard] = useState(false);
+    const [downloading, setDownloading] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -43,7 +44,7 @@ function Results() {
         try {
             const tableName = "Result";
             const filterBy = `{Program} = '${item.fields.Name}'`;
-            const sortField = "Point";
+            const sortField = "Points";
             const sortDirection = 'asc';
             const Records = await fetchRecords(
                 tableName,
@@ -64,9 +65,9 @@ function Results() {
     };
 
     const DownloadPoster = (programName) => {
+        setDownloading(true);
         // Get the poster element by its ID or a ref
         const posterElement = document.getElementById('poster');
-
         // Use html2canvas to capture the poster element as an image
         html2canvas(posterElement).then((canvas) => {
             // Convert the canvas to a data URL (image format)
@@ -79,7 +80,8 @@ function Results() {
 
             // Trigger the download
             downloadLink.click();
-        });
+        }).finally(() => setDownloading(false));
+
     };
 
     return (
@@ -147,7 +149,7 @@ function Results() {
                                         )}
                                     </div>
                                 ) : (
-                                    <span className="font-semibold mx-auto">Loading</span>
+                                    <span className="font-semibold mx-auto flex gap-2 items-center my-4">Loading <Loader className="animate-spin" /></span>
                                 )}
                             </motion.div>
                         )}
@@ -174,8 +176,9 @@ function Results() {
                                 <button
                                     className="bg-blue-600 text-white font-bold py-3 px-6 rounded-md uppercase text-[16px] mt-4 mx-auto max-w-[450px] w-full flex items-center justify-center transition-all ease-in-out hover:bg-blue-900"
                                     onClick={() => DownloadPoster(result[0]?.programName)}
+                                    disabled={downloading}
                                 >
-                                    Download Now
+                                    {!downloading ? "Download Now" : <Loader className="animate-spin" />}
                                 </button>
                             </motion.div>
                         )}
