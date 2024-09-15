@@ -41,7 +41,7 @@ function ScoreBoard() {
   return (
     <div className='my-10 md:my-20'>
       <div className='w-full' id="scoreboard">
-        <h1 className='text-2xl font-bold md:text-4xl text-center capitalize mb-2'>Score Board</h1>
+        <h1 className='text-2xl font-bold md:text-4xl text-center capitalize mb-28 md:mb-20'>Score Board</h1>
         {scoreBoardData.length ? (
           <div className=" md:gap-3 gap-8 flex flex-col md:flex-row mx-auto "  >
             {scoreBoardData.map((item, index) => (
