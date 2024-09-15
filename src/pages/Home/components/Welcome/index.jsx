@@ -1,6 +1,7 @@
-import { Logo_lg, text_logo_white_lg } from "@/assets/Logo"
-import { Madrasa, welcome } from "@/assets/images"
-import { Calendar } from 'lucide-react'
+import { useState } from "react";
+import { Logo_lg, text_logo_white_lg } from "@/assets/Logo";
+import { Madrasa, welcome } from "@/assets/images";
+import { Calendar } from 'lucide-react';
 
 const StatiCard = ({ titles, values }) => {
     return (
@@ -12,9 +13,9 @@ const StatiCard = ({ titles, values }) => {
                 </div>
             ))}
         </div>
+    );
+};
 
-    )
-}
 const DateCard = ({ day, month, year }) => {
     return (
         <div className="flex items-center justify-center gap-2 bg-orange-500 rounded-xl w-fit py-1 px-4 text-white font-semibold text-sm md:text-md">
@@ -23,14 +24,29 @@ const DateCard = ({ day, month, year }) => {
             <span>{month}</span>
             <span>{year}</span>
         </div>
-    )
-}
+    );
+};
 
 function Welcome() {
+    const [loading, setLoading] = useState(true);
+
+    const handleImageLoad = () => {
+        setLoading(false);
+    };
+
     return (
         <div className="flex flex-col mx-auto ">
             <div className="relative p-3">
-                <img src={welcome} alt="welcome" className="w-full h-auto" />
+                {/* Skeleton loader when the image is loading */}
+                {loading && <div className="w-full h-[400px] bg-gray-300 animate-pulse"></div>}
+                
+                <img 
+                    src={welcome} 
+                    alt="welcome" 
+                    className={`w-full h-auto ${loading ? 'hidden' : 'block'}`} 
+                    onLoad={handleImageLoad} 
+                />
+
                 <div className="absolute top-0 flex flex-col items-center justify-between h-full w-full left-0">
                     <div className="flex flex-col items-center mt-6 gap-2 sm:mt-8 md:mt-16 md:gap-6">
                         <img src={Logo_lg} alt="alt_" className="w-16 h-auto sm:w-20 md:w-24" />
@@ -44,10 +60,10 @@ function Welcome() {
                 </div>
             </div>
 
-
             <section className="flex flex-col items-center justify-center mt-20">
                 <h1 className="text-2xl md:text-4xl font-bold text-black my-6 mt-10 flex flex-col md:flex-row gap-2 items-center justify-center">
-                    Welcome to <span className="text-sky-400">Muhibbi Season 3</span></h1>
+                    Welcome to <span className="text-sky-400">Muhibbi Season 3</span>
+                </h1>
                 <div className="flex items-center justify-center flex-col md:flex-row p-4 md:p-0">
                     <div className="md:w-1/2 max-w-[550px]">
                         <img src={Madrasa} alt="Madrasa" className="w-auto h-auto  object-cover" />
@@ -64,7 +80,7 @@ function Welcome() {
                 </div>
             </section>
         </div>
-    )
+    );
 }
 
-export default Welcome
+export default Welcome;
