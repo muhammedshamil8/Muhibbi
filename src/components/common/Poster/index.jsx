@@ -33,7 +33,7 @@ const Poster = ({ programName, stage, records }) => {
           className="w-full h-auto object-cover"
         />
         <p className={classNames(
-          'font-bold uppercase absolute top-32 left-10 ',
+          'font-bold uppercase absolute top-32 left-10',
           {
             'text-purple-800': stage === 'OFF STAGE',
             'text-amber-900': stage === 'ON STAGE'
