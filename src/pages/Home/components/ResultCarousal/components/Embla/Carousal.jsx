@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
-import { DotButton, useDotButton } from './DotButton'
 import Autoplay from 'embla-carousel-autoplay'
 import Poster from '../../../../../../components/common/Poster'
 
@@ -12,14 +11,13 @@ const numberWithinRange = (number, min, max) =>
 const EmblaCarousel = (props) => {
   const { slides, options } = props
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
-    Autoplay({ playOnInit: false, delay: 2000 })
+    Autoplay({ playOnInit: true, delay: 2000 })
   ])
   const [isPlaying, setIsPlaying] = useState(true)
   const tweenFactor = useRef(0)
+  const [activeIndex, setActiveIndex] = useState(0)
   const tweenNodes = useRef([])
 
-  const { selectedIndex, scrollSnaps, onDotButtonClick } =
-    useDotButton(emblaApi)
 
   const onButtonAutoplayClick = useCallback(
     (callback) => {
@@ -84,7 +82,7 @@ const EmblaCarousel = (props) => {
         emblaApi.slideNodes()[slideIndex].style.transform = `scale(${scale})`
       })
     })
-  }, [])  
+  }, [])
 
   const tweenOpacity = useCallback((emblaApi, eventName) => {
     const engine = emblaApi.internalEngine()
@@ -143,6 +141,15 @@ const EmblaCarousel = (props) => {
       .on('reInit', () => setIsPlaying(autoplay.isPlaying()))
   }, [emblaApi])
 
+  const updateActiveIndex = useCallback((emblaApi) => {
+    if (!emblaApi) return
+    setActiveIndex(emblaApi.selectedScrollSnap())
+  }, [])
+
+  const handleNavigationClick = (index) => {
+    if (emblaApi) emblaApi.scrollTo(index)
+  }
+
   useEffect(() => {
     if (!emblaApi) return
 
@@ -159,7 +166,8 @@ const EmblaCarousel = (props) => {
       .on('scroll', tweenScale)
       .on('slideFocus', tweenScale)
       .on('slideFocus', tweenOpacity)
-  }, [emblaApi, tweenOpacity, tweenScale])
+      .on('select', () => updateActiveIndex(emblaApi))
+  }, [emblaApi, tweenOpacity, tweenScale, updateActiveIndex])
 
   return (
     <div className="embla">
@@ -177,19 +185,19 @@ const EmblaCarousel = (props) => {
         </div>
       </div>
 
-      <div className="embla__controls ">
-        <div className="embla__dots !mx-auto">
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              onClick={() => onDotButtonClick(index)}
-              className={'embla__dot  '.concat(
-                index === selectedIndex ? ' embla__dot--selected' : ''
-              )}
+      <div className="embla__controls  relative my-4 mt-10">
+        <div className="absolute bottom-4 left-2/4 !z-20 flex -translate-x-2/4 gap-2">
+          {slides.map((_, i) => (
+            <span
+              key={i}
+              className={`block h-1 cursor-pointer rounded-2xl transition-all ${activeIndex === i ? "w-8 bg-black" : "w-4 bg-black/50"
+                }`}
+              onClick={() => handleNavigationClick(i)}
             />
           ))}
         </div>
       </div>
+
     </div>
   )
 }

@@ -9,7 +9,7 @@ const OPTIONS = { loop: true }
 const Carousel = ({ slides }) => (
     <>
         <EmblaCarousel slides={slides} options={OPTIONS} />
-        <Link to='/results' className='text-center block text-2xl font-bold text-purple-800 mt-10'>View All Results</Link>
+        <Link to='/results' className='text-center block  w-fit rounded-lg text-sm px-4 py-1.5 mx-auto text-white bg-sky-700 '>Other Results</Link>
     </>
 )
 
