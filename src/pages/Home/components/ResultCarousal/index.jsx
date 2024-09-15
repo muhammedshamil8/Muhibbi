@@ -1,11 +1,14 @@
 import { fetchRecords } from "@/utils/airtableService";
 import React, { useState, useEffect } from "react";
 import Carousel from "./components/Embla";
+import { Loader } from "lucide-react";
 
 function Results() {
   const [resultList, setResultList] = useState([]);
+  const [Loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
       try {
         // Fetch programs
@@ -26,7 +29,7 @@ function Results() {
         const resultsPromises = programs.map(async (program) => {
           const tableName = "Result";
           const filterBy = `{Program} = '${program.fields.Name}'`;
-          const sortField = "Point";
+          const sortField = "Points";
           const sortDirection = 'asc';
           const results = await fetchRecords(
             tableName,
@@ -46,6 +49,8 @@ function Results() {
         setResultList(resultsList);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -56,7 +61,11 @@ function Results() {
     <div>
       <h1 className='text-2xl font-bold md:text-4xl text-center capitalize mb-16'>Result</h1>
       <div className="flex flex-col">
-        <Carousel slides={resultList} />
+        {Loading ? (
+          <p className="flex items-center justify-center gap-2 mx-auto w-full my-4 min-h-[200px]">Loading <Loader className="animate-spin" /></p>
+        ) : (
+          <Carousel slides={resultList} />
+        )}
       </div>
     </div>
   );
