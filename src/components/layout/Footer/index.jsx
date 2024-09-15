@@ -4,7 +4,7 @@ import { Phone } from 'lucide-react';
 function Footer() {
   return (
     <div>
-      <footer className="p-8 pb-6 flex w-full justify-between max-w-[1200px] mx-auto flex-col md:flex-row gap-6">
+      <footer className="p-8 pb-6 flex w-full justify-between max-w-[1200px] mx-auto flex-col-reverse md:flex-row gap-6">
         <div className="flex flex-col gap-4 justify-between md:mx-0 mx-auto">
           <img src={text_logo_white_lg} alt="alt_" className="w-auto h-auto max-w-[220px] md:mx-0 mx-auto" />
           <div className="bg-gray-300 rounded-xl p-2 flex flex-col space-y-2 w-[300px] ">
@@ -24,7 +24,7 @@ function Footer() {
           </div>
         </div>
       </footer >
-      <p className="text-center text-sm pb-4 text-white font-semibold select-none">Crafted with care by <a href="link" >Shamil</a> & <a href="dsaf">Saleel</a></p>
+      <p className="text-center text-sm pb-4 text-white font-semibold select-none">Crafted with 🤍 by <a href="https://www.linkedin.com/in/muhammed-shamil-65878227a/" >Shamil</a> & <a href="https://www.linkedin.com/in/muhammed-saleel-cp-84064524b/">Saleel</a></p>
     </div >
   )
 }
