@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-import Poster from '../../../../../../components/common/Poster'
+import Poster from '../../../../../../components/common/PosterCarousal'
 
 const TWEEN_FACTOR_BASE = 0.84
 
