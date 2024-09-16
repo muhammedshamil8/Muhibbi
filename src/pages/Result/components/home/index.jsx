@@ -86,13 +86,13 @@ function Results() {
 
     return (
         <div className="relative overflow-x-hidden">
-            <div className="relative z-40 flex flex-col items-center justify-center p-4 md:p-10">
+            <div className="relative z-40 flex flex-col items-center justify-center p-2 md:p-10">
                 <NavLink to="/" className="text-black font-semibold text-lg absolute top-6 left-6 md:left-10 z-10 flex  items-center">
                     <ChevronLeft size={20} />&nbsp;Home
                 </NavLink>
 
                 <div className="font-bold text-center text-4xl p-10">Results</div>
-                <div className="flex justify-center flex-col items-center mx-auto w-full">
+                <div className="flex justify-center flex-col items-center mx-auto w-full custom-width">
                     <input
                         type="text"
                         placeholder="Search Program"
@@ -174,7 +174,7 @@ function Results() {
                                 </div>
 
                                 <button
-                                    className="bg-blue-600 text-white font-bold py-3 px-6 rounded-md uppercase text-[16px] mt-4 mx-auto max-w-[450px] w-full flex items-center justify-center transition-all ease-in-out hover:bg-blue-900"
+                                    className="bg-blue-600 text-white font-bold py-3 px-6 rounded-md uppercase text-[16px] mt-4 mx-auto max-w-[450px] w-full flex items-center justify-center transition-all ease-in-out hover:bg-blue-900 custom-width"
                                     onClick={() => DownloadPoster(result[0]?.programName)}
                                     disabled={downloading}
                                 >
