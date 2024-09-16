@@ -16,7 +16,7 @@ const Poster = ({ programName, stage, records }) => {
     });
     return groupedRecords;
   };
-
+  console.log(records.fields)
 
   return (
     <motion.div
@@ -26,30 +26,32 @@ const Poster = ({ programName, stage, records }) => {
       transition={{ duration: 0.2 }}
 
     >
-      <div className="max-w-[450px] rounded-lg overflow-hidden mx-auto shadow-xl relative" id='poster'>
+      <div className="poster-card rounded-lg overflow-hidden mx-auto shadow-xl relative" id='poster'>
         <img
           src={stage === "OFF STAGE" ? offStage : onStage}
           alt="poster"
           className="w-full h-auto object-cover"
         />
-        <p className={classNames(
-          'font-bold uppercase absolute top-32 left-10',
-          {
-            'text-purple-800': stage === 'OFF STAGE',
-            'text-amber-900': stage === 'ON STAGE'
-          })}>
-          {programName}
-        </p>
-        <p
-          className={classNames(
-            'text-sm absolute top-[150px] left-10 ',
+        <div className='custom-top-programName'>
+          <p className={classNames(
+            'font-bold uppercase custom-program-name',
             {
               'text-purple-800': stage === 'OFF STAGE',
               'text-amber-900': stage === 'ON STAGE'
             })}>
-          {programName}
-        </p>
-        <div className='top-[203px] left-[75px] absolute space-y-[10px]'>
+            {programName}
+          </p>
+          <p
+            className={classNames(
+              'text-sm custom-program-category',
+              {
+                'text-purple-800': stage === 'OFF STAGE',
+                'text-amber-900': stage === 'ON STAGE'
+              })}>
+            {programName}
+          </p>
+        </div>
+        <div className='custom-top-winners'>
           {Object.entries(groupRecordsByPlace(records)).map(([place, records]) => (
             <div key={place} className="flex gap-4 items-start">
               {records.map((record, index) => (
@@ -60,11 +62,11 @@ const Poster = ({ programName, stage, records }) => {
                       'text-purple-800': stage === 'OFF STAGE',
                       'text-amber-900': stage === 'ON STAGE'
                     })}>
-                  <p className={`font-semibold text-md`}>
+                  <p className={`font-semibold text-md custom-winner-name`}>
                     {record.fields.Name}
                   </p>
-                  <p className={` text-[11px] `}>
-                    {record.fields.Department}
+                  <p className={` text-[11px] custom-winner-team`}>
+                    {record.fields.Team}
                   </p>
                 </div>
               ))}
@@ -72,7 +74,7 @@ const Poster = ({ programName, stage, records }) => {
           ))}
         </div>
       </div>
-     
+
     </motion.div>
   );
 };
