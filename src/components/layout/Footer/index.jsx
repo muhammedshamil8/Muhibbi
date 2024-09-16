@@ -20,7 +20,11 @@ function Footer() {
             <div className="bg-white p-2 rounded-lg flex items-center justify-center">
               <img src={partner} alt="alt_" className="w-auto h-auto max-w-[200px] " />
             </div>
-            <a href="tel:+91322323232"><p className="flex gap-2 items-center my-2  justify-center md:justify-end">+91 322323232 <Phone size={18} /></p></a>
+            <a href="https://wa.me/91322323232">
+              <p className="flex gap-2 items-center my-2 justify-center md:justify-end">
+                +91 7034916695 <Phone size={18} />
+              </p>
+            </a>
           </div>
         </div>
       </footer >
