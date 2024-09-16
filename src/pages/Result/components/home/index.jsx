@@ -118,7 +118,7 @@ function Results() {
                                                 if (search === "") {
                                                     return val;
                                                 } else if (
-                                                    val.fields.Name.toLowerCase().includes(search.toLowerCase())
+                                                    val.fields.Name !== undefined && val.fields?.Name.toLowerCase().includes(search && search.toLowerCase())
                                                 ) {
                                                     return val;
                                                 }
@@ -136,7 +136,7 @@ function Results() {
                                                 </motion.div>
                                             ))}
                                         </AnimatePresence>
-                                        {resultList.filter((val) => val.fields.Name.toLowerCase().includes(search.toLowerCase())).length === 0 && (
+                                        {resultList.filter((val) => val.fields.Name && val.fields.Name.toLowerCase().includes(search.toLowerCase())).length === 0 && (
                                             <motion.div
                                                 initial={{ opacity: 0, y: 20 }}
                                                 animate={{ opacity: 1, y: 0 }}
