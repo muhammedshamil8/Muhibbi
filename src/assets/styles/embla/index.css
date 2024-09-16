@@ -3,7 +3,7 @@
     margin: auto;
     --slide-height: 19rem;
     --slide-spacing: 0rem;
-    --slide-size: 50%;
+    --slide-size: 380px;
     --detail-medium-contrast: rgb(25, 25, 25);
     --text-body: rgb(222, 222, 222);
   }
@@ -145,4 +145,98 @@
     font-size: 1.4rem;
     padding: 0 2.4rem;
     min-width: 8.4rem;
+  }
+
+
+
+  /* custom css */
+
+  .poster-card{
+    max-width: 450px;
+  }
+  .custom-top-programName{
+    position: absolute;
+    top: 128px;
+    left: 42px;
+  }
+  .custom-top-winners{
+    position: absolute;
+    top: 203px;
+    left: 75px;
+  }
+  .carousal-top-programName{
+    position: absolute;
+    top: 108px;
+    left: 38px;
+  }
+  .carousal-top-winners{
+    position: absolute;
+    top: 170px;
+    left: 65px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  @media (max-width:510px) {
+    .embla{
+      --slide-size: 300px;
+    }
+    .poster-card{
+      max-width: 350px;
+    }
+    .custom-width{
+      max-width: 350px !important;
+    }
+    .custom-top-programName{
+      position: absolute;
+      top: 100px;
+      left: 32px;
+    }
+    .custom-top-winners{
+      position: absolute;
+      top: 156px;
+      left: 65px;
+     
+    }
+    .custom-winner-name{
+      font-size: 14px;
+    }
+    .custom-winner-team{
+      font-size: 8px;
+    }
+    .custom-program-category{
+      font-size: 10px !important;
+      margin-top: -4px;
+    }
+    .custom-program-name{
+      font-size: 12px;
+    }
+
+    .carousal-top-programName{
+      position: absolute;
+      top: 85px;
+      left: 30px;
+    }
+    .carousal-top-winners{
+      position: absolute;
+      top: 132px;
+      left: 55px;
+     
+     
+    }
+    .carousal-winner-name{
+      font-size: 11px;
+    }
+    .carousal-winner-team{
+      font-size: 8px !important;
+      margin-top: -6px;
+    }
+    .carousal-program-category{
+      font-size: 10px !important;
+    }
+    .carousal-program-name{
+      font-size: 12px !important;
+    }
+    
   }
