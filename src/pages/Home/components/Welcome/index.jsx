@@ -38,7 +38,7 @@ function Welcome() {
         <div className="flex flex-col mx-auto ">
             <div className="relative p-3">
                 {/* Skeleton loader when the image is loading */}
-                {loading && <div className="w-full h-[400px] bg-gray-300 animate-pulse"></div>}
+                {loading && <div className="w-full h-[350px] md:h-[650px] bg-gray-300 animate-pulse rounded-xl"></div>}
                 
                 <img 
                     src={welcome} 
@@ -54,13 +54,13 @@ function Welcome() {
                     </div>
 
                     <div className="flex flex-col items-center gap-6 -mb-0 sm:-mb-8 md:-mb-14">
-                        <DateCard month="September" day="24" year="2024" />
-                        <StatiCard titles={["Days", "Events", "Students"]} values={["2", "200+", "300+"]} />
+                        <DateCard month="September" day="14 - 17" year="2024" />
+                        <StatiCard titles={["Days", "Events", "Students"]} values={["4", "30+", "300+"]} />
                     </div>
                 </div>
             </div>
 
-            <section className="flex flex-col items-center justify-center mt-20">
+            <section className="flex flex-col items-center justify-center mt-4 md:mt-20">
                 <h1 className="text-2xl md:text-4xl font-bold text-black my-6 mt-10 flex flex-col md:flex-row gap-2 items-center justify-center">
                     Welcome to <span className="text-sky-400">Muhibbi Season 3</span>
                 </h1>
