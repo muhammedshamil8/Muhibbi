@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { text_logo_clr } from '@/assets/Logo'
 import { Link, NavLink } from 'react-router-dom'
 import { LayoutGrid, X } from 'lucide-react'
+import { Link as ScrollLink } from 'react-scroll';
 
 function NavBar() {
   const [navOpen, setNavOpen] = useState(false);
@@ -13,7 +14,7 @@ function NavBar() {
     },
     {
       title: 'Score Board',
-      url: '#scoreboard'
+      url: 'scoreboard'
     },
     {
       title: 'Result',
@@ -21,7 +22,7 @@ function NavBar() {
     },
     {
       title: 'Captains',
-      url: '#captains'
+      url: 'captains'
     },
   ];
 
@@ -35,9 +36,15 @@ function NavBar() {
 
       <nav className='hidden md:flex justify-evenly items-center p-5 gap-6 '>
         {navLinks.map((link, index) => (
-          <Link key={index} to={link.url} className='text-black font-semibold text-lg link-custom'>
-            {link.title}
-          </Link>
+          link.url.startsWith('/') ? (
+            <Link key={index} to={link.url} className='text-black font-semibold text-lg link-custom'>
+              {link.title}
+            </Link>
+          ) : (
+            <ScrollLink key={index} to={link.url} smooth={true} duration={500} offset={-80} className='text-black font-semibold text-lg link-custom'>
+              {link.title}
+            </ScrollLink>
+          )
         ))}
       </nav>
 
@@ -67,17 +74,15 @@ function NavBar() {
           }`}
       >
         {navLinks.map((link, index) => (
-          <NavLink
-            key={index}
-            to={link.url}
-            className={({ isActive }) =>
-              `block p-2 !z-50 hover:text-orange-500 rounded transition-colors duration-300 ${isActive ? "" : "text-gray-800"
-              }`
-            }
-            onClick={() => setNavOpen(false)} // Close the mobile menu on link click
-          >
-            {link.title}
-          </NavLink>
+          link.url.startsWith('/') ? (
+            <Link key={index} to={link.url} className='block p-2 !z-50 hover:text-orange-500 rounded transition-colors duration-300 text-gray-800' onClick={() => setNavOpen(false)}>
+              {link.title}
+            </Link>
+          ) : (
+            <ScrollLink key={index} to={link.url} smooth={true} duration={500} offset={-80} className='block p-2 !z-50 hover:text-orange-500 rounded transition-colors duration-300 text-gray-800' onClick={() => setNavOpen(false)}>
+              {link.title}
+            </ScrollLink>
+          )
         ))}
       </div>
     </div>
