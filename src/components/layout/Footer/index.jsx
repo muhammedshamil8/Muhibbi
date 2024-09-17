@@ -1,15 +1,25 @@
 import { Logo_sm, Logo_lg, text_logo_clr, partner, text_logo_white_sm, text_logo_white_lg } from "@/assets/Logo";
 import { Phone } from 'lucide-react';
+import { useState } from "react";
 
 function Footer() {
+  const [message, setMessage] = useState("");
+  const handleClick = () => {
+    setMessage("");
+    alert("Thank you for your feedback!")
+  }
   return (
     <div>
       <footer className="p-8 pb-6 flex w-full justify-between max-w-[1200px] mx-auto flex-col-reverse md:flex-row gap-6">
         <div className="flex flex-col gap-4 justify-between md:mx-0 mx-auto">
           <img src={text_logo_white_lg} alt="alt_" className="w-auto h-auto max-w-[220px] md:mx-0 mx-auto" />
           <div className="bg-gray-300 rounded-xl p-2 flex flex-col space-y-2 w-[300px] ">
-            <textarea className="p-4 rounded-xl w-full h-20 min-h-20" placeholder="Type Here"></textarea>
-            <button className="bg-black rounded-lg text-white font-semibold py-1 px-4 self-end text-sm">Submit</button>
+            <textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="p-4 rounded-xl w-full h-20 min-h-20"
+              placeholder="Type Here" ></textarea>
+            <button className="bg-black rounded-lg text-white font-semibold py-1 px-4 self-end text-sm" onClick={handleClick}>Submit</button>
           </div>
         </div>
         <div className="flex flex-col text-white flex-1  items-center md:items-end md:mx-0 mx-auto">
