@@ -13,6 +13,7 @@ function Results() {
     const [showResultCard, setShowResultList] = useState(true);
     const [showCard, setShowCard] = useState(false);
     const [downloading, setDownloading] = useState(false);
+    const [Loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -28,6 +29,7 @@ function Results() {
                     sortDirection
                 );
                 setResultList(Records);
+                setLoading(false);
             } catch (error) {
                 console.error(error);
             }
@@ -61,7 +63,8 @@ function Results() {
             });
             setResult(SingleRecord);
             setShowCard(true);
-            console.log(SingleRecord);
+            // console.log(SingleRecord);
+            setLoading(false);
         } catch (error) {
             console.error(error);
         }
@@ -154,7 +157,11 @@ function Results() {
                                         )}
                                     </div>
                                 ) : (
-                                    <span className="font-semibold mx-auto flex gap-2 items-center my-4">Loading <Loader className="animate-spin" /></span>
+                                    Loading ? (
+                                        <span className="font-semibold mx-auto flex gap-2 items-center my-4">Loading <Loader className="animate-spin" /></span>
+                                    ) : (
+                                        <p className="text-center mt-4 font-semibold">No results found</p>
+                                    )
                                 )}
                             </motion.div>
                         )}
@@ -174,7 +181,7 @@ function Results() {
                                     <Poster
                                         programCategory={result[0]?.ProgramCategory}
                                         programName={result[0]?.programName}
-                                        stage={result[0]?.stage}    
+                                        stage={result[0]?.stage}
                                         records={result[0]?.records}
                                     />
                                 </div>

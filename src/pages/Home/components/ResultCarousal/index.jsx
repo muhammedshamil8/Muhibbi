@@ -62,11 +62,15 @@ function Results() {
     <div>
       <h1 className='text-2xl font-bold md:text-4xl text-center capitalize mb-16'>Result</h1>
       <div className="flex flex-col">
+        {!Loading && resultList.length === 0 && (
+          <p className="text-center mt-4 font-semibold">No results found</p>
+        )}
         {Loading ? (
           <p className="flex items-center justify-center gap-2 mx-auto w-full my-4 min-h-[200px]">Loading <Loader className="animate-spin" /></p>
         ) : (
           <Carousel slides={resultList} />
         )}
+
       </div>
     </div>
   );
