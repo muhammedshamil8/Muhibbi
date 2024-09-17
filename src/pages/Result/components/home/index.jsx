@@ -95,17 +95,17 @@ function Results() {
 
     return (
         <div className="relative overflow-x-hidden">
-            <div className="relative z-40 flex flex-col items-center justify-center p-2 md:p-10">
+            <div className="relative z-40 flex flex-col items-center justify-center p-1 md:p-10">
                 <NavLink to="/" className="text-black font-semibold text-lg absolute top-6 left-6 md:left-10 z-10 flex  items-center">
                     <ChevronLeft size={20} />&nbsp;Home
                 </NavLink>
 
                 <div className="font-bold text-center text-4xl p-10">Results</div>
-                <div className="flex justify-center flex-col items-center mx-auto w-full custom-width">
+                <div className="flex justify-center flex-col items-center mx-auto w-full ">
                     <input
                         type="text"
                         placeholder="Search Program"
-                        className="bg-[#FFEACC] w-full max-w-[500px] h-12 px-6 border-none rounded-lg focus:outline-none mb-6 min-w-[300px] focus:shadow-lg transition duration-300 ease-in-out"
+                        className="custom-width bg-[#FFEACC] w-full max-w-[500px] h-12 px-6 border-none rounded-lg focus:outline-none mb-6 min-w-[300px] focus:shadow-lg transition duration-300 ease-in-out"
                         onChange={(e) => {
                             setSearch(e.target.value);
                             setShowResultList(true);
@@ -121,7 +121,7 @@ function Results() {
                                 transition={{ duration: 0.3 }}
                             >
                                 {resultList.length ? (
-                                    <div className="flex justify-center items-center gap-4 flex-wrap p-1 ">
+                                    <div className="flex justify-center items-center gap-4  p-1 w-full flex-wrap">
                                         <AnimatePresence>
                                             {resultList.filter((val) => {
                                                 if (search === "") {
@@ -138,9 +138,10 @@ function Results() {
                                                     exit={{ opacity: 0, scale: 0.8, x: 300 }}
                                                     transition={{ duration: 0.2, delay: index * 0.1 }}
                                                     key={index}
+                                                    className=""
                                                 >
-                                                    <div className="bg-stone-200 px-6 py-2 rounded-xl cursor-pointer hover:scale-105 transition-all ease-in-out duration-300" onClick={() => getPrograms(item)}>
-                                                        <p className="text-lg md:text-2xl font-medium whitespace-nowrap">{item.fields.Name}</p>
+                                                    <div className="bg-stone-200 px-3 md:px-6 py-1 md:py-2 rounded-xl cursor-pointer hover:scale-105 transition-all ease-in-out duration-300  w-fit" onClick={() => getPrograms(item)}>
+                                                        <p className="text-sm    sm:text-lg font-medium whitespace-nowrap">{item.fields.Name}</p>
                                                     </div>
                                                 </motion.div>
                                             ))}

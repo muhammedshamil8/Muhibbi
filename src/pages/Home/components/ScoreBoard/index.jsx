@@ -3,6 +3,7 @@ import { fetchRecords } from "@/utils/airtableService";
 import { motion } from "framer-motion"
 import { Crown } from "@/assets/images"
 import classNames from 'classnames';
+import { Loader } from "lucide-react";
 
 function ScoreBoard() {
 
@@ -88,11 +89,11 @@ function ScoreBoard() {
                   </div>
                 </motion.div >
                 {index % 2 !== 0 && <div className="scoreCard--responsive" />}
-                </div>
+              </div>
             ))}
           </div>
         ) : (<div className="mx-auto my-4 w-full  flex items-center justify-center">
-          <span className="font-semibold mx-auto">Loading</span>
+          <span className="font-bold flex items-center gap-2 justify-center mx-auto">Loading <Loader className="animate-spin" /></span>
         </div>)
         }
       </div>
