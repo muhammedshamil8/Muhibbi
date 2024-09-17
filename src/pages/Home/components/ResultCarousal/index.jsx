@@ -29,7 +29,7 @@ function Results() {
         const resultsPromises = programs.map(async (program) => {
           const tableName = "Result";
           const filterBy = `{Program} = '${program.fields.Name}'`;
-          const sortField = "Points";
+          const sortField = "Place";
           const sortDirection = 'asc';
           const results = await fetchRecords(
             tableName,
@@ -37,6 +37,7 @@ function Results() {
             sortField,
             sortDirection
           );
+          console.log(results);
 
           return {
             ProgramCategory: program.fields.Category,

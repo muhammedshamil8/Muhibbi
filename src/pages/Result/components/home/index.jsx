@@ -46,7 +46,7 @@ function Results() {
         try {
             const tableName = "Result";
             const filterBy = `{Program} = '${item.fields.Name}'`;
-            const sortField = "Points";
+            const sortField = "Place";
             const sortDirection = 'asc';
             const Records = await fetchRecords(
                 tableName,
@@ -55,6 +55,7 @@ function Results() {
                 sortDirection
             );
             console.log(item.fields);
+            console.log(Records);
             SingleRecord.push({
                 programName: item.fields.Name,
                 ProgramCategory: item.fields.Category,
