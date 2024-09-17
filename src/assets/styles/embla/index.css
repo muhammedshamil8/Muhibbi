@@ -252,13 +252,13 @@
 
   .custom-top-programName {
     position: absolute;
-    top: 100px;
+    top: 105px;
     left: 32px;
   }
 
   .custom-top-winners {
     position: absolute;
-    top: 152px;
+    top: 153px;
     left: 55px;
     gap: 5px;
   }
