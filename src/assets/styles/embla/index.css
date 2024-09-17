@@ -176,16 +176,16 @@
 /* custom  */
 .custom-top-programName {
   position: absolute;
-  top: 128px;
+  top: 130px;
   left: 42px;
 }
 .custom-top-winners {
   position: absolute;
-  top: 200px;
-  left: 75px;
+  top: 199px;
+  left: 70px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 15px;
 }
 .custom-program-category {
   font-size: 11px !important;
