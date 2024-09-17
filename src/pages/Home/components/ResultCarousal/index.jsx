@@ -37,7 +37,7 @@ function Results() {
             sortField,
             sortDirection
           );
-          console.log(results);
+          // console.log(results);
 
           return {
             ProgramCategory: program.fields.Category,

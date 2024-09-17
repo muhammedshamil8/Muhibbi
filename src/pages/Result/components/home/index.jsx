@@ -54,8 +54,8 @@ function Results() {
                 sortField,
                 sortDirection
             );
-            console.log(item.fields);
-            console.log(Records);
+            // console.log(item.fields);
+            // console.log(Records);
             SingleRecord.push({
                 programName: item.fields.Name,
                 ProgramCategory: item.fields.Category,

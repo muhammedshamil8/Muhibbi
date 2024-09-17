@@ -182,8 +182,8 @@ const EmblaCarousel = (props) => {
         <div className="embla__container">
           {/* <div className=' flex items-center justify-center gap-10'> */}
           {slides.map((slide, index) => (
-            <div className='embla__slide_protect'>
-              <div className="embla__slide mx-auto" key={index}>
+            <div className='embla__slide_protect' key={index}>
+              <div className="embla__slide mx-auto" >
                 <Poster
                   ProgramCategory={slide.ProgramCategory}
                   programName={slide.programName}

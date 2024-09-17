@@ -16,7 +16,7 @@ const Poster = ({ programCategory, programName, stage, records }) => {
     });
     return groupedRecords;
   };
-  console.log(programCategory)
+  // console.log(programCategory)
 
   return (
     <motion.div

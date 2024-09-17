@@ -26,7 +26,7 @@ function ScoreBoard() {
             color: colors[index % colors.length],
           },
         }));
-        console.log(RecordsData);
+        // console.log(RecordsData);
         setScoreBoardData(RecordsData)
 
       } catch (error) {
