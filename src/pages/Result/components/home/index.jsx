@@ -52,13 +52,16 @@ function Results() {
                 sortField,
                 sortDirection
             );
+            console.log(item.fields);
             SingleRecord.push({
                 programName: item.fields.Name,
+                ProgramCategory: item.fields.Category,
                 records: Records,
                 stage: Records[0]?.fields.Stage,
             });
             setResult(SingleRecord);
             setShowCard(true);
+            console.log(SingleRecord);
         } catch (error) {
             console.error(error);
         }
@@ -83,6 +86,8 @@ function Results() {
         }).finally(() => setDownloading(false));
 
     };
+
+
 
     return (
         <div className="relative overflow-x-hidden">
@@ -167,8 +172,9 @@ function Results() {
                             >
                                 <div id="poster" className="w-fit h-fit mx-auto">
                                     <Poster
+                                        programCategory={result[0]?.ProgramCategory}
                                         programName={result[0]?.programName}
-                                        stage={result[0]?.stage}
+                                        stage={result[0]?.stage}    
                                         records={result[0]?.records}
                                     />
                                 </div>

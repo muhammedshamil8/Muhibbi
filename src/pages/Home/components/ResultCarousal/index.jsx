@@ -39,6 +39,7 @@ function Results() {
           );
 
           return {
+            ProgramCategory: program.fields.Category,
             programName: program.fields.Name,
             records: results,
             stage: results[0]?.fields.Stage,

@@ -170,12 +170,13 @@ const EmblaCarousel = (props) => {
   }, [emblaApi, tweenOpacity, tweenScale, updateActiveIndex])
 
   return (
-    <div className="embla">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
+    <div className="embla mx-auto">
+      <div className="embla__viewport mx-auto" ref={emblaRef}>
+        <div className="embla__container  mx-auto">
           {slides.map((slide, index) => (
             <div className="embla__slide" key={index}>
               <Poster
+                ProgramCategory={slide.ProgramCategory}
                 programName={slide.programName}
                 stage={slide.stage}
                 records={slide.records}

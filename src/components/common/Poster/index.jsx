@@ -3,7 +3,7 @@ import { onStage, offStage } from "@/assets/poster";
 import classNames from 'classnames';
 
 
-const Poster = ({ programName, stage, records }) => {
+const Poster = ({ programCategory, programName, stage, records }) => {
 
   const groupRecordsByPlace = (records) => {
     const groupedRecords = {};
@@ -16,7 +16,7 @@ const Poster = ({ programName, stage, records }) => {
     });
     return groupedRecords;
   };
-  console.log(records.fields)
+  console.log(programCategory)
 
   return (
     <motion.div
@@ -43,12 +43,12 @@ const Poster = ({ programName, stage, records }) => {
           </p>
           <p
             className={classNames(
-              'text-sm custom-program-category',
+              'custom-program-category',
               {
                 'text-purple-800': stage === 'OFF STAGE',
                 'text-amber-900': stage === 'ON STAGE'
               })}>
-            {programName}
+            {programCategory}
           </p>
         </div>
         <div className='custom-top-winners'>
@@ -62,10 +62,10 @@ const Poster = ({ programName, stage, records }) => {
                       'text-purple-800': stage === 'OFF STAGE',
                       'text-amber-900': stage === 'ON STAGE'
                     })}>
-                  <p className={`font-semibold text-md custom-winner-name`}>
+                  <p className={`font-semibold text-sm custom-winner-name`}>
                     {record.fields.Name}
                   </p>
-                  <p className={` text-[11px] custom-winner-team`}>
+                  <p className={` text-[11px] custom-winner-team -mt-1`}>
                     {record.fields.Team}
                   </p>
                 </div>

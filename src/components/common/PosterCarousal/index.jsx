@@ -3,7 +3,7 @@ import { onStage, offStage } from "@/assets/poster";
 import classNames from 'classnames';
 
 
-const Poster = ({ programName, stage, records }) => {
+const Poster = ({ ProgramCategory, programName, stage, records }) => {
 
   const groupRecordsByPlace = (records) => {
     const groupedRecords = {};
@@ -48,7 +48,7 @@ const Poster = ({ programName, stage, records }) => {
                 'text-purple-800': stage === 'OFF STAGE',
                 'text-amber-900': stage === 'ON STAGE'
               })}>
-            {programName}
+            {ProgramCategory}
           </p>
         </div>
         <div className=' carousal-top-winners '>

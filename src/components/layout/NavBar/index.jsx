@@ -32,7 +32,7 @@ function NavBar() {
 
   return (
     <div className='flex justify-between p-4 md:p-0  md:my-10 items-center'>
-      <img src={text_logo_clr} alt="logo" className="w-auto h-auto max-h-[40px] md:max-h-[60px] object-cover" />
+      <img src={text_logo_clr} alt="logo" className="w-auto h-auto max-h-[40px] md:max-h-[60px] object-cover md:px-5" />
 
       <nav className='hidden md:flex justify-evenly items-center p-5 gap-6 '>
         {navLinks.map((link, index) => (
