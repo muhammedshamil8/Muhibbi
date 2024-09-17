@@ -47,18 +47,18 @@ function Welcome() {
                     className={`w-full h-auto ${loading ? 'hidden' : 'block'}`}
                     onLoad={handleImageLoad}
                 />
-                <div class="welcome-container">
-                    <div class="logo-container">
-                        <img src={Logo_lg} alt="alt_" class="logo" />
-                        <img src={text_logo_white_lg} alt="alt_" class="text-logo" />
+                <div className="welcome-container">
+                    <div className="logo-container">
+                        <img src={Logo_lg} alt="alt_" className="logo" />
+                        <img src={text_logo_white_lg} alt="alt_" className="text-logo" />
                     </div>
 
-                    <div class="info-container">
-                        <div class="date-card">
+                    <div className="info-container">
+                        <div className="date-card">
                             <DateCard month="September" day="14 - 17" year="2024" />
 
                         </div>
-                        <div class="stats-card">
+                        <div className="stats-card">
                             <StatiCard titles={["Days", "Events", "Students"]} values={["4", "30+", "300+"]} />
                         </div>
                     </div>

@@ -10,7 +10,14 @@ const numberWithinRange = (number, min, max) =>
 
 const EmblaCarousel = (props) => {
   const { slides, options } = props
-  const [emblaRef, emblaApi] = useEmblaCarousel(options, [
+
+  const optionss = {
+    align: 'center',  // Align the active slide in the center
+    loop: true,       // Enable looping behavior if necessary
+    containScroll: 'trimSnaps'  // Contain the scrolling within snaps
+  };
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(optionss, [
     Autoplay({ playOnInit: true, delay: 2000 })
   ])
   const [isPlaying, setIsPlaying] = useState(true)
@@ -76,7 +83,7 @@ const EmblaCarousel = (props) => {
           })
         }
 
-        const tweenValue = 1 - Math.abs(diffToTarget * tweenFactor.current * 0.2)
+        const tweenValue = 1 - Math.abs(diffToTarget * tweenFactor.current * 0.5)
         const scale = numberWithinRange(tweenValue, 0, 1).toString()
         const tweenNode = tweenNodes.current[slideIndex]
         emblaApi.slideNodes()[slideIndex].style.transform = `scale(${scale})`
@@ -172,17 +179,21 @@ const EmblaCarousel = (props) => {
   return (
     <div className="embla mx-auto">
       <div className="embla__viewport mx-auto" ref={emblaRef}>
-        <div className="embla__container  mx-auto">
+        <div className="embla__container">
+          {/* <div className=' flex items-center justify-center gap-10'> */}
           {slides.map((slide, index) => (
-            <div className="embla__slide" key={index}>
-              <Poster
-                ProgramCategory={slide.ProgramCategory}
-                programName={slide.programName}
-                stage={slide.stage}
-                records={slide.records}
-              />
+            <div className='embla__slide_protect'>
+              <div className="embla__slide mx-auto" key={index}>
+                <Poster
+                  ProgramCategory={slide.ProgramCategory}
+                  programName={slide.programName}
+                  stage={slide.stage}
+                  records={slide.records}
+                />
+              </div>
             </div>
           ))}
+          {/* </div> */}
         </div>
       </div>
 
@@ -199,7 +210,7 @@ const EmblaCarousel = (props) => {
         </div>
       </div>
 
-    </div>
+    </div >
   )
 }
 

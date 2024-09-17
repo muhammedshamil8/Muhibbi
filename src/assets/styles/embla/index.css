@@ -20,9 +20,18 @@
 
 .embla__slide {
   transform: translate3d(0, 0, 0);
+  transform-origin: center; 
   flex: 0 0 var(--slide-size);
   min-width: 0;
   padding-left: var(--slide-spacing);
+  max-width: var(--slide-size);
+  margin: auto;
+}
+.embla__slide_protect {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .embla__slide__number {
@@ -208,8 +217,8 @@
 /* carousal */
 .carousal-top-programName {
   position: absolute;
-  top: 110px;
-  left: 38px;
+  top: 115px;
+  left: 35px;
 }
 
 .carousal-top-winners {
@@ -284,8 +293,8 @@
 
   .carousal-top-programName {
     position: absolute;
-    top: 85px;
-    left: 30px;
+    top: 90px;
+    left: 28px;
   }
 
   .carousal-top-winners {
